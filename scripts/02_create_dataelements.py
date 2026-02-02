@@ -32,13 +32,13 @@ def create_data_element(client, name, short_name, code, value_type="INTEGER", ag
     if response.status_code == 201:
         return response.json()["response"]["uid"]
     else:
-        print(f"❌ Failed to create {name}: {response.text}")
+        print(f"Failed to create {name}: {response.text}")
         return None
 
 
 def main():
     print("="*60)
-    print("💊 DHIS2 Data Elements Setup")
+    print("DHIS2 Data Elements Setup")
     print("="*60)
     print()
     
@@ -48,7 +48,7 @@ def main():
         username=config['username'],
         password=config['password']
     )
-    print(f"🔗 Connected to: {config['dhis2_url']}\n")
+    print(f"Connected to: {config['dhis2_url']}\n")
     
     data_elements = [
         {
@@ -93,9 +93,9 @@ def main():
         if element_id:
             element_map[element["code"]] = element_id
             success_count += 1
-            print(f"✅ [{success_count}/{len(data_elements)}] {element['name']}: {element_id}")
+            print(f"[{success_count}/{len(data_elements)}] {element['name']}: {element_id}")
         else:
-            print(f"❌ [{i}/{len(data_elements)}] Failed: {element['name']}")
+            print(f"[{i}/{len(data_elements)}] Failed: {element['name']}")
     
     print()
     print("Saving data element mappings...")
@@ -105,15 +105,15 @@ def main():
     
     print()
     print("="*60)
-    print("📊 SUMMARY")
+    print("SUMMARY")
     print("="*60)
-    print(f"✅ Data elements created: {success_count}/{len(data_elements)}")
-    print(f"📁 Mapping saved: data/mappings/dataelement_map.json")
+    print(f"Data elements created: {success_count}/{len(data_elements)}")
+    print(f"Mapping saved: data/mappings/dataelement_map.json")
     
     if success_count == len(data_elements):
-        print("🎉 All data elements created successfully!")
+        print("All data elements created successfully!")
     else:
-        print(f"⚠️  {len(data_elements) - success_count} elements failed")
+        print(f"{len(data_elements) - success_count} elements failed")
     
     print("="*60)
 
