@@ -1,6 +1,22 @@
-# Docker volumes (large, regenerated)
+# Configuration files (contains passwords)
+config/
+
+# Docker volumes (large, auto-generated)
 dhis2-home/
 db-data/
+
+# Data mappings (will be generated)
+data/mappings/*.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+.venv
 
 # Logs
 *.log
@@ -9,7 +25,15 @@ logs/
 # OS files
 .DS_Store
 Thumbs.db
+.DS_Store?
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+config.json
